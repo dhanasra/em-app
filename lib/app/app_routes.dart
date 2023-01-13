@@ -1,4 +1,7 @@
+import 'package:em/presentation/auth/bloc/auth_bloc.dart';
+import 'package:em/presentation/auth/pages/welcome/welcome_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../presentation/on_board/onboard_view.dart';
 import '../presentation/splash/splash_view.dart';
@@ -20,6 +23,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_)=>const SplashView());
       case Routes.onBoard :
         return MaterialPageRoute(builder: (_)=>const OnBoardView());
+      case Routes.welcome :
+        return MaterialPageRoute(
+          builder: (_)=>BlocProvider(
+            create: (_)=>AuthBloc(),
+            child: const WelcomeView()));
       default :
         return unDefinedRoute();
     }
