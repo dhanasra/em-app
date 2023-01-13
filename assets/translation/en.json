@@ -1,0 +1,58 @@
+{
+  "app_name": "EXPENSO",
+  "not_found_404": "404 Not Found",
+  "on_boarding_title_1": "Organize it all with one simple app",
+  "on_boarding_title_2": "Build for people powering the teams",
+  "on_boarding_title_3": "Successfully manage your business",
+  "on_boarding_subtitle_1": "Track all your assets, income & expenses in one app.",
+  "on_boarding_subtitle_2": "Generate daily, monthly PDF & Excel reports",
+  "on_boarding_subtitle_3": "Set a savings goal & achieve it. All under one roof.",
+  "skip": "Skip",
+  "start": "Start",
+  "start_caps": "START",
+  "continue_caps": "CONTINUE",
+  "email_empty": "Please enter email address.",
+  "email_error": "Incorrect email address.",
+  "email_hint": "Enter your email address",
+  "or_caps": "OR",
+  "continue_with_google": "Continue With Google",
+  "continue_with_facebook": "Continue With Facebook",
+  "empty_task_title": "No Tasks Here Yet",
+  "empty_task_subtitle": "Add a new task by clicking '+' button",
+  "calendar_allow_access": "Want to be more efficient than ever ?",
+  "calendar_allow_access_btn": "Allow Access To Calendar",
+
+
+  "settings": "SETTINGS",
+
+  "account": "ACCOUNT",
+  "profile": "Profile",
+  "premium": "Premium",
+  "invite_friends": "Invite Friends",
+
+  "preferences": "PREFERENCES",
+  "theme": "Theme",
+  "dynamic_theme": "Dynamic Theme",
+  "language": "Language",
+  "notification_sound": "Notification Sound",
+  "first_day": "First Day",
+  "default_list": "Default List",
+
+  "tasks": "TASKS",
+  "completed_tasks": "Completed Tasks",
+  "event_reminder": "Event Reminder",
+
+  "todo": "TODO",
+  "priority_support": "Priority Support",
+  "support": "Support",
+  "community": "TODO Community",
+
+  "on": "ON",
+  "off": "OFF",
+  "show": "SHOW",
+  "hide": "HIDE",
+  "sun": "SUN",
+  "mon": "MON",
+
+  "select_language": "SELECT LANGUAGE"
+}

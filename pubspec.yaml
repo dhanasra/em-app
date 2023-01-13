@@ -11,16 +11,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-  flutter_lints: ^2.0.0
-
+  flutter_svg: ^1.1.6
+  
   # For Language Translations
   easy_localization: ^3.0.1
-
+  
   # Firebase
   firebase_core: ^2.4.1
   firebase_auth: ^4.2.5
@@ -42,8 +37,34 @@ dev_dependencies:
 
   # Dependency Injection
   get_it: ^7.2.0
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
 
 flutter:
 
   uses-material-design: true
 
+  assets:
+    - assets/images/
+    - assets/translation/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins_extra_bold.ttf
+          weight: 900
+        - asset: assets/fonts/poppins_bold.ttf
+          weight: 800
+        - asset: assets/fonts/poppins_semi_bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins_medium.ttf
+          weight: 500
+        - asset: assets/fonts/poppins_regular.ttf
+          weight: 300
+        - asset: assets/fonts/poppins_light.ttf
+          weight: 100

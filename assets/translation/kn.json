@@ -1,0 +1,58 @@
+{
+  "app_name": "Expenso",
+  "not_found_404": "404 Not Found",
+  "on_boarding_title_1": "Organize it all with one simple app",
+  "on_boarding_title_2": "Build for people powering the teams",
+  "on_boarding_title_3": "Successfully manage your business",
+  "on_boarding_subtitle_1": "Stay organized with tasks, lists, reminders & calendar - all in one app.",
+  "on_boarding_subtitle_2": "It’s how teams collaborate, manage work processes and their daily tasks.",
+  "on_boarding_subtitle_3": "Set business processes and balance it all with your personal life. All under one roof.",
+  "skip": "Skip",
+  "start": "Start",
+  "start_caps": "START",
+  "continue_caps": "CONTINUE",
+  "email_empty": "Please enter email address.",
+  "email_error": "Incorrect email address.",
+  "email_hint": "Enter your email address",
+  "or_caps": "OR",
+  "continue_with_google": "Continue With Google",
+  "continue_with_facebook": "Continue With Facebook",
+  "empty_task_title": "No Tasks Here Yet",
+  "empty_task_subtitle": "Add a new task by clicking '+' button",
+  "calendar_allow_access": "Want to be more efficient than ever ?",
+  "calendar_allow_access_btn": "Allow Access To Calendar",
+
+
+  "settings": "ಸಂಯೋಜನೆಗಳು",
+
+  "account": "ಖಾತೆ",
+  "profile": "ಪ್ರೊಫೈಲ್",
+  "premium": "ಪ್ರೀಮಿಯಂ",
+  "invite_friends": "ಸ್ನೇಹಿತರನ್ನು ಆಹ್ವಾನಿಸಿ",
+
+  "preferences": "ಆದ್ಯತೆಗಳು",
+  "theme": "ಥೀಮ್",
+  "dynamic_theme": "ಡೈನಾಮಿಕ್ ಥೀಮ್",
+  "language": "ಭಾಷೆ",
+  "notification_sound": "ಅಧಿಸೂಚನೆ ಧ್ವನಿ",
+  "first_day": "ಮೊದಲನೇ ದಿನಾ",
+  "default_list": "ಡೀಫಾಲ್ಟ್ ಪಟ್ಟಿ",
+
+  "tasks": "ಕಾರ್ಯಗಳು",
+  "completed_tasks": "ಪೂರ್ಣಗೊಂಡ ಕಾರ್ಯಗಳು",
+  "event_reminder": "ಈವೆಂಟ್ ಜ್ಞಾಪನೆ",
+
+  "todo": "TODO",
+  "priority_support": "ಆದ್ಯತೆಯ ಸಹಾಯ",
+  "support": "ಸಹಾಯ",
+  "community": "TODO ಸಮುದಾಯ",
+
+  "on": "ಮೇಲೆ",
+  "off": "ಆರಿಸಿ",
+  "show": "ಪ್ರದರ್ಶಿಸು",
+  "hide": "ಮರೆಮಾಡಿ",
+  "sun": "ಭಾನುವಾರ",
+  "mon": "ಸೋಮವಾರ",
+
+  "select_language": "ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+}
