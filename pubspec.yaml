@@ -38,6 +38,9 @@ dependencies:
 
   # Dependency Injection
   get_it: ^7.2.0
+
+  # Extra Icons
+  font_awesome_flutter: ^10.3.0
   
 
 dev_dependencies:

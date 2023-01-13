@@ -11,9 +11,16 @@
   "start": "Start",
   "start_caps": "START",
   "continue_caps": "CONTINUE",
+  
   "email_empty": "Please enter email address.",
   "email_error": "Incorrect email address.",
   "email_hint": "Enter your email address",
+  "email_label": "Email Address",
+
+  "lang_label": "Select Language",
+
+  "welcome": "Welcome !",
+
   "or_caps": "OR",
   "continue_with_google": "Continue With Google",
   "continue_with_facebook": "Continue With Facebook",
