@@ -26,6 +26,7 @@ class ColorManger{
 
   static Color gRed = const Color(0xFFDB4437);
   static Color fBlue = const Color(0xFF3b5998);
+  static Color iPurple = const Color(0xFF962fbf);
 
   static MaterialColor getSwatch({required Color color}) {
     return MaterialColor(color.value, {

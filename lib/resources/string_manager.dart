@@ -14,6 +14,11 @@ class AppStrings{
   static const String emailEmpty = "email_empty";
   static const String emailError = "email_error";
   static const String emailHint = "email_hint";
+  static const String emailLabel = "email_label";
+
+  static const String langLabel = "lang_label";
+
+  static const String welcome = "welcome";
 
   static const String skip = "skip";
   static const String start = "start";

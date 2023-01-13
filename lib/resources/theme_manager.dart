@@ -76,13 +76,18 @@ ThemeData getApplicationTheme(String theme){
     ),
     // app bar theme
     appBarTheme: AppBarTheme(
-      centerTitle: true,
+      centerTitle: false,
       color: white,
       actionsIconTheme: IconThemeData(color: ColorManger.grey),
       foregroundColor: textColor,
       elevation: 0,
       shadowColor: shadowColor,
-      titleTextStyle: getRegularStyle(color: textColor, fontSize: FontSize.s16),
+      titleTextStyle: TextStyle(
+        height: 1.5,
+        color: textColor,
+        fontSize: FontSize.s20,
+        fontWeight: FontWeightManager.semiBold
+      ),
       toolbarTextStyle: getRegularStyle(color: ColorManger.primary, fontSize: FontSize.s12)
     ),
     shadowColor: shadowColor,
@@ -93,10 +98,11 @@ ThemeData getApplicationTheme(String theme){
       buttonColor: ColorManger.primary,
       splashColor: ColorManger.primaryOpacity70
     ),
+    
     //elevated button theme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: getSemiBoldStyle(color: white, fontSize: FontSize.s14),
+        textStyle: getRegularStyle(color: white, fontSize: FontSize.s14),
         backgroundColor: ColorManger.primary,
         minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSize.s4))
@@ -156,20 +162,29 @@ ThemeData getApplicationTheme(String theme){
       backgroundColor: modalWidgetsBGColor
     ),
     dividerColor: shadowColor,
+    
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.all(AppPadding.p12),
       hintStyle: getRegularStyle(color: ColorManger.grey, fontSize: FontSize.s14),
-      labelStyle: getMediumStyle(color: ColorManger.darkGrey),
+      labelStyle: TextStyle(
+        color: textColor,
+        fontSize: FontSize.s14,
+        fontWeight: FontWeightManager.medium
+      ),
+      floatingLabelStyle: TextStyle(
+        color: textColor,
+        fontSize: FontSize.s14,
+        fontWeight: FontWeightManager.regular
+      ),
       errorStyle: getRegularStyle(color: ColorManger.error),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: ColorManger.lightGrey, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s4))
+        borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
+        borderRadius: const BorderRadius.all(Radius.circular(2.5))
       ),
-      filled: true,
       focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManger.lightGrey, width: AppSize.s1_5),
-          borderRadius: const BorderRadius.all(Radius.circular(AppSize.s4))
+          borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
+          borderRadius: const BorderRadius.all(Radius.circular(2.5))
       ),
       errorBorder:  OutlineInputBorder(
           borderSide: BorderSide(color: ColorManger.error, width: AppSize.s1_5),
@@ -180,6 +195,8 @@ ThemeData getApplicationTheme(String theme){
           borderRadius: const BorderRadius.all(Radius.circular(AppSize.s4))
       ),
     ),
+
+    
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: ColorManger.primary,
