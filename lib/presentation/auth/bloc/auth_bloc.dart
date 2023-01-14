@@ -8,6 +8,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
     on<CheckIfEmailExists>(_onCheckIfEmailExists);
+    on<EmailSignUp>(_onEmailSignUp);
   }
 
   void _onCheckIfEmailExists(CheckIfEmailExists event, Emitter emit)async{
@@ -19,6 +20,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(EmailState(isExists: isEmailExists));
     }on FirebaseException catch(e){
       emit(AuthFailure(message: _getErrorMessage(e.code)));
+    }
+  }
+
+  void _onEmailSignUp(EmailSignUp event, Emitter emit) async{
+    emit(Loading());
+    try{
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
+      await credential.user!.updateDisplayName(event.name);
+      emit(AuthSuccess());
+    }on FirebaseAuthException catch (e){
+      String message = _getErrorMessage(e.code, param: event.email.trim().isEmpty ? "Email address" : "Password");
+      emit(AuthFailure(message: message));
     }
   }
 

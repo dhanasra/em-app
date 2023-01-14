@@ -7,3 +7,15 @@ class CheckIfEmailExists extends AuthEvent{
   final String email;
   CheckIfEmailExists({required this.email});
 }
+
+class EmailSignUp extends AuthEvent {
+  final String email;
+  final String password;
+  final String name;
+
+  EmailSignUp({
+    required this.email,
+    required this.password,
+    required this.name
+  });
+}
