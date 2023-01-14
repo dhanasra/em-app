@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../resources/style_manager.dart';
 import '../../../resources/values_manager.dart';
 
-class RichTextSpan extends StatelessWidget {
-  const RichTextSpan({super.key});
+class CRichTextSpan extends StatelessWidget {
+  const CRichTextSpan({super.key});
 
   @override
   Widget build(BuildContext context) {

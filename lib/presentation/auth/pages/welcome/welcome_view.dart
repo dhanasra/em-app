@@ -40,7 +40,7 @@ class _WelcomeViewState extends State<WelcomeView> {
         listener: (_, state){
           if(state is EmailState){
             Navigator.of(context).pushNamed(
-                state.isExists ? Routes.onBoard : Routes.splash,
+                state.isExists ? Routes.onBoard : Routes.emailSignup,
                 arguments: _viewModel.emailController.text
             );
           }else if(state is AuthFailure){
