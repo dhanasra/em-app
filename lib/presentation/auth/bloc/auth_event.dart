@@ -8,6 +8,16 @@ class CheckIfEmailExists extends AuthEvent{
   CheckIfEmailExists({required this.email});
 }
 
+class EmailLogin extends AuthEvent {
+  final String email;
+  final String password;
+
+  EmailLogin({
+    required this.email,
+    required this.password
+  });
+}
+
 class EmailSignUp extends AuthEvent {
   final String email;
   final String password;

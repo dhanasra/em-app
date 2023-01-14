@@ -9,6 +9,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
     on<CheckIfEmailExists>(_onCheckIfEmailExists);
     on<EmailSignUp>(_onEmailSignUp);
+    on<EmailLogin>(_onEmailLogin);
   }
 
   void _onCheckIfEmailExists(CheckIfEmailExists event, Emitter emit)async{
@@ -33,6 +34,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await credential.user!.updateDisplayName(event.name);
       emit(AuthSuccess());
     }on FirebaseAuthException catch (e){
+      String message = _getErrorMessage(e.code, param: event.email.trim().isEmpty ? "Email address" : "Password");
+      emit(AuthFailure(message: message));
+    }
+  }
+
+  void _onEmailLogin(EmailLogin event, Emitter emit) async{
+    emit(Loading());
+
+    try{
+      UserCredential userCredential =
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: event.email.trim(), password: event.password.trim());
+      userCredential.user;
+      emit(AuthSuccess());
+    }on FirebaseAuthException catch(e){
       String message = _getErrorMessage(e.code, param: event.email.trim().isEmpty ? "Email address" : "Password");
       emit(AuthFailure(message: message));
     }
