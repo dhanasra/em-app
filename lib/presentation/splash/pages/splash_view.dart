@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:em/presentation/splash/bloc/splash_bloc.dart';
 import 'package:em/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../app/app_routes.dart';
-import '../../resources/assets_manager.dart';
-import '../../resources/color_manager.dart';
+import '../../../app/app_routes.dart';
+import '../../../resources/assets_manager.dart';
+import '../../../resources/color_manager.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -41,8 +43,19 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManger.primary,
-      body: Center(
-        child: Image.asset(ImageAssets.logo, width: AppSize.s60,),
+      body: BlocConsumer<SplashBloc, SplashState>(
+        listener: (_,state)async{
+          if(state is ResetPasswordLinkFetched){
+            await Navigator.of(context).pushNamed(Routes.resetPassword,arguments: state.actionCode);
+          }else if(state is AuthType){
+            await Navigator.of(context).pushNamed (state.isLoggedIn ? Routes.onBoard : Routes.onBoard);
+          }
+        },
+        builder: (_, state){
+          return Center(
+            child: Image.asset(ImageAssets.logo, width: AppSize.s60,),
+          );
+        },
       ),
     );
   }

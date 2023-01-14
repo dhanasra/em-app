@@ -2,12 +2,13 @@ import 'package:em/presentation/auth/bloc/auth_bloc.dart';
 import 'package:em/presentation/auth/pages/email_signin/email_signin_view.dart';
 import 'package:em/presentation/auth/pages/email_signup/email_signup_view.dart';
 import 'package:em/presentation/auth/pages/forgot_password/forgot_password_view.dart';
+import 'package:em/presentation/auth/pages/reset_password/reset_password_view.dart';
 import 'package:em/presentation/auth/pages/welcome/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../presentation/on_board/onboard_view.dart';
-import '../presentation/splash/splash_view.dart';
+import '../presentation/splash/pages/splash_view.dart';
 import '../resources/string_manager.dart';
 
 class Routes {
@@ -19,6 +20,7 @@ class Routes {
   static const String emailSignup = "/email_signup";
   static const String emailSignIn = "/email_signin";
   static const String forgotPassword = "/forgot_password";
+  static const String resetPassword = "/reset_password";
 }
 
 class RouteGenerator {
@@ -49,6 +51,14 @@ class RouteGenerator {
           builder: (_)=>BlocProvider(
             create: (_)=>AuthBloc(),
             child: const ForgotPasswordView()));
+      case Routes.resetPassword : 
+        
+        Uri? uri = settings.arguments as Uri?;
+
+        return MaterialPageRoute(
+          builder: (_)=>BlocProvider(
+            create: (_)=>AuthBloc()..add(VerifyResetPasswordLink(uri: uri)),
+            child: const ResetPasswordView()), settings: settings);
       default :
         return unDefinedRoute();
     }

@@ -1,11 +1,12 @@
 import 'package:em/app/app_cubits/themes_cubit.dart';
 import 'package:em/app/app_cubits/translation_cubit.dart';
-import 'package:em/presentation/splash/splash_view.dart';
+import 'package:em/presentation/splash/pages/splash_view.dart';
 import 'package:em/resources/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../presentation/splash/bloc/splash_bloc.dart';
 import 'app_routes.dart';
 
 class App extends StatelessWidget {
@@ -16,7 +17,13 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return getMaterialApp(widget: const SplashView(), title: 'EM', buildContext: context);
+    return getMaterialApp(
+       widget: BlocProvider(
+        create: (_)=>SplashBloc()..add(InitApp()),
+        child: const SplashView()
+      ), 
+      title: 'EM', 
+      buildContext: context);
   }
 
   Widget getMaterialApp({required Widget widget, required String title, required BuildContext buildContext}){
