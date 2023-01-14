@@ -1,6 +1,7 @@
 import 'package:em/presentation/auth/bloc/auth_bloc.dart';
 import 'package:em/presentation/auth/pages/email_signin/email_signin_view.dart';
 import 'package:em/presentation/auth/pages/email_signup/email_signup_view.dart';
+import 'package:em/presentation/auth/pages/forgot_password/forgot_password_view.dart';
 import 'package:em/presentation/auth/pages/welcome/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String welcome = "/welcome";
   static const String emailSignup = "/email_signup";
   static const String emailSignIn = "/email_signin";
+  static const String forgotPassword = "/forgot_password";
 }
 
 class RouteGenerator {
@@ -42,6 +44,11 @@ class RouteGenerator {
           builder: (_)=>BlocProvider(
             create: (_)=>AuthBloc(),
             child: const EmailSignInView()), settings: settings);
+      case Routes.forgotPassword :
+        return MaterialPageRoute(
+          builder: (_)=>BlocProvider(
+            create: (_)=>AuthBloc(),
+            child: const ForgotPasswordView()));
       default :
         return unDefinedRoute();
     }

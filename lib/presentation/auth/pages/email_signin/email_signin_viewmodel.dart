@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:em/app/app_routes.dart';
 import 'package:em/presentation/base/base_view_model.dart';
 import 'package:em/resources/validations_manager.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,10 @@ class EmailSignInViewModel extends BaseViewModel {
     passwordController = TextEditingController();
     passwordHide = ValueNotifier(true);
     formKey = GlobalKey<FormState>();
+  }
+
+  void onForgotPasswordClick(BuildContext context){
+    Navigator.of(context).pushNamed(Routes.forgotPassword);
   }
 
   void loginUser(BuildContext context){

@@ -89,7 +89,7 @@ class EmailSignInFields extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: AppPadding.p4, bottom: AppPadding.p24),
           child: TextButton(
-            onPressed: (){}, 
+            onPressed: ()=>viewModel.onForgotPasswordClick(context), 
             child: Text(AppStrings.forgotPassword.tr())
           )
         ),
