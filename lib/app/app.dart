@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:em/app/app_cubits/themes_cubit.dart';
 import 'package:em/app/app_cubits/translation_cubit.dart';
 import 'package:em/presentation/splash/pages/splash_view.dart';
 import 'package:em/resources/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../presentation/splash/bloc/splash_bloc.dart';
@@ -46,6 +49,14 @@ class App extends StatelessWidget {
           );
         }),
       );
+  }
+
+  void closeApp() {
+    if (Platform.isAndroid) {
+      SystemNavigator.pop();
+    } else {
+      exit(0);
+    }
   }
   
 }

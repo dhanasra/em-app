@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:em/presentation/splash/bloc/splash_bloc.dart';
 import 'package:em/resources/values_manager.dart';
@@ -17,27 +16,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  late Timer _timer;
-
-  _startDelay(){
-    _timer = Timer(const Duration(seconds: 2), _goNext);
-  }
-
-  _goNext(){
-    Navigator.pushReplacementNamed(context, Routes.onBoard);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _startDelay();
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +26,7 @@ class _SplashViewState extends State<SplashView> {
           if(state is ResetPasswordLinkFetched){
             await Navigator.of(context).pushNamed(Routes.resetPassword,arguments: state.actionCode);
           }else if(state is AuthType){
-            await Navigator.of(context).pushNamed (state.isLoggedIn ? Routes.onBoard : Routes.onBoard);
+            await Navigator.of(context).pushNamed (state.isLoggedIn ? Routes.home : Routes.onBoard);
           }
         },
         builder: (_, state){

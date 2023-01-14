@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:em/app/app_routes.dart';
 import 'package:em/presentation/auth/pages/email_signin/email_signin_viewmodel.dart';
 import 'package:em/presentation/auth/widgets/rich_text_span.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _EmailSignInViewState extends State<EmailSignInView> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (_, state){
           if(state is AuthSuccess){
-            print("Success");
+            Navigator.of(context).pushNamed(Routes.home);
           }else if(state is AuthFailure){
             print("failure");
           }

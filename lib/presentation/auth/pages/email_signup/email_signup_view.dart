@@ -4,6 +4,7 @@ import 'package:em/presentation/auth/widgets/rich_text_span.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../app/app_routes.dart';
 import '../../../../resources/string_manager.dart';
 import '../../../../resources/style_manager.dart';
 import '../../../../resources/values_manager.dart';
@@ -37,7 +38,7 @@ class _EmailSignupViewState extends State<EmailSignupView> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (_, state){
           if(state is AuthSuccess){
-            print("Success");
+            Navigator.of(context).pushNamed(Routes.home);
           }else if(state is AuthFailure){
             print("failure");
           }

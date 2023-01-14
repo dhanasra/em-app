@@ -4,6 +4,8 @@ import 'package:em/presentation/auth/pages/email_signup/email_signup_view.dart';
 import 'package:em/presentation/auth/pages/forgot_password/forgot_password_view.dart';
 import 'package:em/presentation/auth/pages/reset_password/reset_password_view.dart';
 import 'package:em/presentation/auth/pages/welcome/welcome_view.dart';
+import 'package:em/presentation/home/cubit/home_cubit.dart';
+import 'package:em/presentation/home/pages/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,11 +18,14 @@ class Routes {
   static const String splash = "/";
   static const String onBoard = "/on_board";
 
+  //auth
   static const String welcome = "/welcome";
   static const String emailSignup = "/email_signup";
   static const String emailSignIn = "/email_signin";
   static const String forgotPassword = "/forgot_password";
   static const String resetPassword = "/reset_password";
+
+  static const String home = "/home";
 }
 
 class RouteGenerator {
@@ -59,6 +64,11 @@ class RouteGenerator {
           builder: (_)=>BlocProvider(
             create: (_)=>AuthBloc()..add(VerifyResetPasswordLink(uri: uri)),
             child: const ResetPasswordView()), settings: settings);
+      case Routes.home :
+        return MaterialPageRoute(
+          builder: (_)=>BlocProvider(
+            create: (_)=>HomeCubit(),
+            child: const HomeView()));
       default :
         return unDefinedRoute();
     }
