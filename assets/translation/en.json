@@ -50,6 +50,12 @@
   "home_bottom_2": "Calendar",
   "home_bottom_3": "Settings",
 
+  "welcome_text_1": "Lets organize your expenses",
+  "balance": "Balance",
+  "total_in": "Total In ( Credit )",
+  "total_out": "Total Out ( Debit )",
+  "view_reports": "VIEW REPORTS >",
+
   "settings": "SETTINGS",
 
   "account": "ACCOUNT",

@@ -37,6 +37,30 @@ TextStyle getBoldStyle({double fontSize = FontSize.s12, required Color color}){
   return _getTextStyle(fontSize, FontConstants.fontFamily, FontWeightManager.bold, color);
 }
 
+TextStyle getheadline1Style(context){
+  return Theme.of(context).textTheme.headline1!;
+}
+
+TextStyle getheadline2Style(context){
+  return Theme.of(context).textTheme.headline2!;
+}
+
+TextStyle getheadline3Style(context){
+  return Theme.of(context).textTheme.headline3!;
+}
+
+TextStyle getheadline4Style(context){
+  return Theme.of(context).textTheme.headline4!;
+}
+
+TextStyle getheadline5Style(context){
+  return Theme.of(context).textTheme.headline5!;
+}
+
+TextStyle getheadline6Style(context){
+  return Theme.of(context).textTheme.headline6!;
+}
+
 TextStyle getSubtitle1Style(context){
   return Theme.of(context).textTheme.subtitle1!;
 }
@@ -49,6 +73,10 @@ TextStyle getBodyText1Style(context){
   return Theme.of(context).textTheme.bodyText1!;
 }
 
-TextStyle getBodyText2Style(context){
-  return Theme.of(context).textTheme.bodyText2!;
+TextStyle getBodyText2Style(context, {Color? color}){
+  return Theme.of(context).textTheme.bodyText2!.copyWith(color: color);
+}
+
+TextStyle getCaptionStyle(context, {Color? color}){
+  return Theme.of(context).textTheme.caption!.copyWith(color: color);
 }

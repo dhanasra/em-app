@@ -122,6 +122,7 @@ ThemeData getApplicationTheme(String theme){
       headline3: getBoldStyle(color: textColor, fontSize: FontSize.s22),
       headline4: getBoldStyle(color: textColor, fontSize: FontSize.s24),
       headline5: getBoldStyle(color: textColor, fontSize: FontSize.s26),
+      headline6: getBoldStyle(color: textColor, fontSize: FontSize.s20),
       subtitle1: TextStyle(
         height: 1.5,
         color: textColor,
@@ -134,13 +135,16 @@ ThemeData getApplicationTheme(String theme){
         fontSize: FontSize.s16,
         fontWeight: FontWeightManager.medium
       ),
-      caption: getRegularStyle(color: ColorManger.grey1),
+      caption: TextStyle(
+        height: 1.5,
+        color: textColor
+      ),
       bodyText1: TextStyle(
         height: 1.5,
         color: textColor
       ),
       bodyText2: TextStyle(
-        height: 1.5,
+        height: 1.3,
         color: textColor
       )
     ),
@@ -163,6 +167,17 @@ ThemeData getApplicationTheme(String theme){
       backgroundColor: modalWidgetsBGColor
     ),
     dividerColor: shadowColor,
+
+    tabBarTheme: TabBarTheme(
+      unselectedLabelColor: shadowColor,
+      labelPadding: const EdgeInsets.symmetric(vertical: 6),
+      labelStyle: TextStyle(
+        height: 1.5,
+        color: textColor,
+        fontSize: FontSize.s16,
+        fontWeight: FontWeightManager.regular
+      ),
+    ),
     
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(

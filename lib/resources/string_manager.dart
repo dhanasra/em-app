@@ -49,6 +49,13 @@ class AppStrings{
   static const String homeBottom2 = "home_bottom_2";
   static const String homeBottom3 = "home_bottom_3";
 
+  static const String welcomeText1 = "welcome_text_1";
+
+  static const String balance = "balance";
+  static const String totalIn = "total_in";
+  static const String totalOut = "total_out";
+  static const String viewReports = "view_reports";
+
   static const String calendar = "CALENDAR";
   static const String work = "WORK";
 
