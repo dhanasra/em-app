@@ -45,6 +45,10 @@ class AppStrings{
   static const String continueWithGoogle = "continue_with_google";
   static const String continueWithFacebook = "continue_with_facebook";
 
+  static const String homeBottom1 = "home_bottom_1";
+  static const String homeBottom2 = "home_bottom_2";
+  static const String homeBottom3 = "home_bottom_3";
+
   static const String calendar = "CALENDAR";
   static const String work = "WORK";
 

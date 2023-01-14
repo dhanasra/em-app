@@ -111,7 +111,7 @@ ThemeData getApplicationTheme(String theme){
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        textStyle: MaterialStateProperty.all(getSemiBoldStyle(color: ColorManger.primary, fontSize: FontSize.s14)),
+        textStyle: MaterialStateProperty.all(getRegularStyle(color: ColorManger.primary, fontSize: FontSize.s14)),
         foregroundColor: MaterialStateProperty.all(ColorManger.primary)
       ),
     ),
