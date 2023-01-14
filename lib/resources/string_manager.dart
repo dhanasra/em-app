@@ -37,6 +37,7 @@ class AppStrings{
   static const String start = "start";
   static const String startCaps = "start_caps";
   static const String continueCaps = "continue_caps";
+  static const String sendResetPasswordLink = "send_reset_password_link";
   static const String orCaps = "or_caps";
   static const String continueWithGoogle = "continue_with_google";
   static const String continueWithFacebook = "continue_with_facebook";

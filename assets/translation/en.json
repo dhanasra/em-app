@@ -32,6 +32,7 @@
   "signup": "Sign Up",
   "login": "Login",
   "forgot_password":"Forgot Password ?",
+  "send_reset_password_link": "Send Reset Password Link",
 
   "or_caps": "OR",
   "continue_with_google": "Continue With Google",
