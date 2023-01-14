@@ -31,6 +31,7 @@ class AppStrings{
   static const String welcome = "welcome";
   static const String signup = "signup";
   static const String login = "login";
+  static const String forgotPassword = "forgot_password";
 
   static const String skip = "skip";
   static const String start = "start";
