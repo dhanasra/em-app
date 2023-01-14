@@ -18,7 +18,19 @@ class AppStrings{
 
   static const String langLabel = "lang_label";
 
+  static const String nameLabel = "name_label";
+  static const String nameEmpty = "name_empty";
+
+  static const String passwordLabel = "password_label";
+  static const String passwordEmpty = "password_empty";
+  static const String passwordError = "password_error";
+  static const String cPasswordLabel = "c_password_label";
+  static const String cPasswordEmpty = "c_password_empty";
+  static const String cPasswordError = "c_password_error";
+
   static const String welcome = "welcome";
+  static const String signup = "signup";
+  static const String login = "login";
 
   static const String skip = "skip";
   static const String start = "start";

@@ -102,6 +102,7 @@ ThemeData getApplicationTheme(String theme){
     //elevated button theme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        elevation: 0,
         textStyle: getRegularStyle(color: white, fontSize: FontSize.s14),
         backgroundColor: ColorManger.primary,
         minimumSize: const Size.fromHeight(50),
