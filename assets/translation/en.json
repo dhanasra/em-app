@@ -12,14 +12,25 @@
   "start_caps": "START",
   "continue_caps": "CONTINUE",
   
-  "email_empty": "Please enter email address.",
+  "email_empty": "Email address must not be empty.",
   "email_error": "Incorrect email address.",
   "email_hint": "Enter your email address",
   "email_label": "Email Address",
 
   "lang_label": "Select Language",
 
+  "name_label": "Full Name",
+  "name_empty": "Name must not be empty.",
+  "password_label": "Password",
+  "password_empty": "Password must not be empty",
+  "password_error": "The password should contain a uppercase, lowercase & a digit.",
+  "c_password_label": "Confirm Password",
+  "c_password_empty": "Confirm Password must not be empty",
+  "c_password_error": "The password & confirm password is not match.",
+
   "welcome": "Welcome !",
+  "signup": "Sign Up",
+  "login": "Login",
 
   "or_caps": "OR",
   "continue_with_google": "Continue With Google",
