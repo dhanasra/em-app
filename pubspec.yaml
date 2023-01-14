@@ -15,6 +15,9 @@ dependencies:
   
   # For Language Translations
   easy_localization: ^3.0.1
+
+  # Deep Link Handling
+  uni_links: ^0.5.1
   
   # Firebase
   firebase_core: ^2.4.1
