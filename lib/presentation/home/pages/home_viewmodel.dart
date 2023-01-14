@@ -1,3 +1,4 @@
+import 'package:em/presentation/expenses/pages/expenses_list/expense_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../base/base_view_model.dart';
@@ -15,7 +16,7 @@ class HomeViewModel extends BaseViewModel{
 
   List<Widget> getPages(BuildContext context){
     return [
-      Container(),
+      const ExpenseListView(),
       Container(),
       Container()
     ];

@@ -37,6 +37,7 @@ class _HomeViewState extends State<HomeView> {
           return Scaffold(
             body: PageView.builder(
                 itemCount: 3,
+                physics: const NeverScrollableScrollPhysics(),
                 controller: _viewModel.pageController,
                 onPageChanged: _viewModel.onPageChange,
                 itemBuilder: (_, index)=>_viewModel.getPages(context)[index],
