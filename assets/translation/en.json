@@ -31,8 +31,12 @@
   "welcome": "Welcome !",
   "signup": "Sign Up",
   "login": "Login",
-  "forgot_password":"Forgot Password ?",
+  "forgot_password": "Forgot Password ?",
+  "reset_password": "Reset Password",
   "send_reset_password_link": "Send Reset Password Link",
+
+  "reset_password_error_c1": "Try resetting your password again",
+  "reset_password_error_c2": "Your request to reset your password has expired or the link has already been used",
 
   "or_caps": "OR",
   "continue_with_google": "Continue With Google",

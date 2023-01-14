@@ -32,12 +32,15 @@ class AppStrings{
   static const String signup = "signup";
   static const String login = "login";
   static const String forgotPassword = "forgot_password";
+  static const String resetPassword = "reset_password";
 
   static const String skip = "skip";
   static const String start = "start";
   static const String startCaps = "start_caps";
   static const String continueCaps = "continue_caps";
   static const String sendResetPasswordLink = "send_reset_password_link";
+  static const String resetPasswordErrorC1 = "reset_password_error_c1";
+  static const String resetPasswordErrorC2 = "reset_password_error_c2";
   static const String orCaps = "or_caps";
   static const String continueWithGoogle = "continue_with_google";
   static const String continueWithFacebook = "continue_with_facebook";
