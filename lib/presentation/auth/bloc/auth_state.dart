@@ -12,6 +12,17 @@ class EmailState extends AuthState {
   EmailState({ required this.isExists });
 }
 
+class ValidatingResetLink extends AuthState {}
+
+class ResetLinkIsValid extends AuthState {
+  final String actionCode;
+  ResetLinkIsValid({
+    required this.actionCode
+  });
+}
+
+class ResetLinkIsNotValid extends AuthState {}
+
 class AuthSuccess extends AuthState {}
 class AuthFailure extends AuthState {
   final String message;

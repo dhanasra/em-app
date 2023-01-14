@@ -11,6 +11,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<EmailSignUp>(_onEmailSignUp);
     on<EmailLogin>(_onEmailLogin);
     on<ForgotPassword>(_onForgotPassword);
+    on<ResetPassword>(_onResetPassword);
+    on<VerifyResetPasswordLink>(_onVerifyResetPasswordLink);
   }
 
   void _onCheckIfEmailExists(CheckIfEmailExists event, Emitter emit)async{
@@ -58,6 +60,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(Loading());
     try{
       await FirebaseAuth.instance.sendPasswordResetEmail(email: event.email.trim());
+      emit(AuthSuccess());
+    }on FirebaseException catch(e){
+      emit(AuthFailure(message: _getErrorMessage(e.code)));
+    }
+  }
+
+  void _onVerifyResetPasswordLink(VerifyResetPasswordLink event, Emitter emit) async{
+    emit(ValidatingResetLink());
+    Uri? uri = event.uri;
+    try{
+      if(uri==null){
+        emit(ResetLinkIsNotValid());
+        return;
+      }
+      await FirebaseAuth.instance.verifyPasswordResetCode(uri.queryParameters['oobCode'] ?? '');
+      emit(ResetLinkIsValid(
+        actionCode: uri.queryParameters['oobCode']!
+      ));
+    }on FirebaseException {
+      emit(ResetLinkIsNotValid());
+    }
+  }
+
+  void _onResetPassword(ResetPassword event, Emitter emit) async{
+    emit(Loading());
+    
+    try{
+      await FirebaseAuth.instance.confirmPasswordReset(
+        code: event.actionCode, 
+        newPassword: event.newPassword);
       emit(AuthSuccess());
     }on FirebaseException catch(e){
       emit(AuthFailure(message: _getErrorMessage(e.code)));

@@ -34,3 +34,21 @@ class ForgotPassword extends AuthEvent {
   final String email;
   ForgotPassword({required this.email});
 }
+
+class VerifyResetPasswordLink extends AuthEvent {
+  final Uri? uri;
+
+  VerifyResetPasswordLink({
+    required this.uri,
+  });
+}
+
+class ResetPassword extends AuthEvent {
+  final String actionCode;
+  final String newPassword;
+
+  ResetPassword({
+    required this.actionCode,
+    required this.newPassword
+  });
+}
