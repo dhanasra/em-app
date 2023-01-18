@@ -4,6 +4,8 @@ import 'package:em/presentation/auth/pages/email_signup/email_signup_view.dart';
 import 'package:em/presentation/auth/pages/forgot_password/forgot_password_view.dart';
 import 'package:em/presentation/auth/pages/reset_password/reset_password_view.dart';
 import 'package:em/presentation/auth/pages/welcome/welcome_view.dart';
+import 'package:em/presentation/expenses/bloc/expense_bloc.dart';
+import 'package:em/presentation/expenses/pages/expense_add/expense_add_view.dart';
 import 'package:em/presentation/home/cubit/home_cubit.dart';
 import 'package:em/presentation/home/pages/home_view.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,8 @@ class Routes {
   static const String resetPassword = "/reset_password";
 
   static const String home = "/home";
+
+  static const String expenseAdd = "/expense_add";
 }
 
 class RouteGenerator {
@@ -69,6 +73,16 @@ class RouteGenerator {
           builder: (_)=>BlocProvider(
             create: (_)=>HomeCubit(),
             child: const HomeView()));
+      case Routes.expenseAdd :
+
+        bool isIncome = settings.arguments as bool;
+
+        return MaterialPageRoute(
+          builder: (_)=>BlocProvider(
+            create: (_)=>ExpenseBloc(),
+            child: ExpenseAddView(
+              isIncome: isIncome,
+            )));
       default :
         return unDefinedRoute();
     }
