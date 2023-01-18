@@ -55,6 +55,27 @@
   "total_in": "Total In ( Credit )",
   "total_out": "Total Out ( Debit )",
   "view_reports": "VIEW REPORTS >",
+  "add_expense": "Add Expense",
+  "add_income": "Add Income",
+  
+  "expense": "Expense",
+  "income": "Income",
+  "transfer": "Transfer",
+  
+  "cash": "Cash",
+  "online": "Online",
+  "upi": "UPI",
+
+  "investment": "Investment",
+  "emi": "EMI",
+  "in_hand": "In Hand",
+  "home": "Home",
+  "travel": "Travel",
+  "flipkart": "Flipkart",
+  "bonus": "Bonus",
+  "rent": "Rent",
+
+  "select_category": "Select Category",
 
   "settings": "SETTINGS",
 
