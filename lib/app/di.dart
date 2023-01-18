@@ -1,6 +1,7 @@
 
 import 'dart:io';
 
+import 'package:em/resources/date_manager.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -21,9 +22,11 @@ Future<void> initAppModule() async{
   Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
   //Hive Box open
+  await Hive.openBox("user");
+  
   final boxCollection = await BoxCollection.open(
     'ExpensoBox', 
-    {'expenses', 'settings'}, 
+    {'expenses', 'settings', 'user'}, 
     path: appDocDirectory.path
   );
   final expenseBox = await boxCollection.openBox<Map>('expenses');
