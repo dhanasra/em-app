@@ -23,6 +23,7 @@ class ColorManger{
   static Color white = const Color(0xFFFFFFFF);
   static Color black2 = const Color(0xFF202020);
   static Color black = const Color(0xFF000000);
+  static Color success = const Color(0xFF006400);
 
   static Color gRed = const Color(0xFFDB4437);
   static Color fBlue = const Color(0xFF3b5998);

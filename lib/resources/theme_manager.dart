@@ -86,7 +86,7 @@ ThemeData getApplicationTheme(String theme){
         height: 1.5,
         color: textColor,
         fontSize: FontSize.s20,
-        fontWeight: FontWeightManager.semiBold
+        fontWeight: FontWeightManager.regular
       ),
       toolbarTextStyle: getRegularStyle(color: ColorManger.primary, fontSize: FontSize.s12)
     ),
@@ -182,7 +182,11 @@ ThemeData getApplicationTheme(String theme){
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.all(AppPadding.p12),
-      hintStyle: getRegularStyle(color: ColorManger.grey, fontSize: FontSize.s14),
+      hintStyle: TextStyle(
+        color: shadowColor,
+        fontSize: FontSize.s16,
+        fontWeight: FontWeightManager.medium
+      ),
       labelStyle: TextStyle(
         color: textColor,
         fontSize: FontSize.s14,
@@ -193,7 +197,16 @@ ThemeData getApplicationTheme(String theme){
         fontSize: FontSize.s14,
         fontWeight: FontWeightManager.regular
       ),
+      prefixStyle: TextStyle(
+        color: ColorManger.primary,
+        fontSize: FontSize.s18,
+        fontWeight: FontWeightManager.regular
+      ),
       errorStyle: getRegularStyle(color: ColorManger.error),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
+        borderRadius: const BorderRadius.all(Radius.circular(2.5))
+      ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
         borderRadius: const BorderRadius.all(Radius.circular(2.5))

@@ -65,12 +65,12 @@ TextStyle getSubtitle1Style(context){
   return Theme.of(context).textTheme.subtitle1!;
 }
 
-TextStyle getSubtitle2Style(context, {Color? color}){
-  return Theme.of(context).textTheme.subtitle2!.copyWith(color: color);
+TextStyle getSubtitle2Style(context, {Color? color, FontWeight? fontWeight}){
+  return Theme.of(context).textTheme.subtitle2!.copyWith(color: color, fontWeight: fontWeight);
 }
 
-TextStyle getBodyText1Style(context){
-  return Theme.of(context).textTheme.bodyText1!;
+TextStyle getBodyText1Style(context, {Color? color}){
+  return Theme.of(context).textTheme.bodyText1!.copyWith(color: color);
 }
 
 TextStyle getBodyText2Style(context, {Color? color}){

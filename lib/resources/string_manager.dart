@@ -56,6 +56,28 @@ class AppStrings{
   static const String totalOut = "total_out";
   static const String viewReports = "view_reports";
 
+  static const String addExpense = "add_expense";
+  static const String addIncome = "add_income";
+
+  static const String expense = "expense";
+  static const String income = "income";
+  static const String transfer = "transfer";
+
+  static const String cash = "cash";
+  static const String online = "online";
+  static const String upi = "upi";
+
+  static const String investment = "investment";
+  static const String emi = "emi";
+  static const String inHand = "in_hand";
+  static const String home = "home";
+  static const String travel = "travel";
+  static const String flipkart = "flipkart";
+  static const String bonus = "bonus";
+  static const String rent = "rent";
+
+  static const String selectCategory ="select_category";
+
   static const String calendar = "CALENDAR";
   static const String work = "WORK";
 
