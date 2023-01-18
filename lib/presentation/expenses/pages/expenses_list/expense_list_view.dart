@@ -27,6 +27,7 @@ class _ExpenseListViewState extends State<ExpenseListView> {
   @override
   void initState() {
     _viewModel = ExpenseListViewModel();
+    _viewModel.start();
     super.initState();
   }
 
@@ -72,23 +73,23 @@ class _ExpenseListViewState extends State<ExpenseListView> {
         children: [
           FloatingActionButton(
             heroTag: 'add',
-            onPressed: ()=>_viewModel.onAddOrRemoveClick(context, false),
+            onPressed: ()=>_viewModel.onAddOrRemoveClick(context, true),
             child: const Icon(FontAwesomeIcons.plus),
           ),
           const SizedBox(width: AppSize.s12,),
           FloatingActionButton(
             heroTag: 'remove',
-            onPressed: ()=>_viewModel.onAddOrRemoveClick(context, true),
+            onPressed: ()=>_viewModel.onAddOrRemoveClick(context, false),
             child: const Icon(FontAwesomeIcons.minus),
           )
         ],
       ),
       body: ListView(
         children: [
-          const DateCard(balance: "100",),
-          const ExpenseCard(
-            credit: "1000",
-            debit: "500",
+          DateCard(balance: _viewModel.balance,),
+          ExpenseCard(
+            credit: _viewModel.currentIncome,
+            debit: _viewModel.currentExpense,
           ),
           BlocBuilder<ExpenseBloc, ExpenseState>(
             buildWhen: (_, state)=>state is Loading || state is ExpensesFetched,
@@ -98,7 +99,11 @@ class _ExpenseListViewState extends State<ExpenseListView> {
                   expenses: state.expenses, 
                   viewModel: _viewModel);
               }else if(state is Loading){
-                return const CircularProgressIndicator();
+                return Container(
+                  margin: const EdgeInsets.all(AppMargin.m24),
+                  alignment: Alignment.center,
+                  child: const CircularProgressIndicator(),
+                );
               }else{
                 return const SizedBox.shrink();
               }
