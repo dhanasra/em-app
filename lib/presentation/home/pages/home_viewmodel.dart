@@ -1,5 +1,7 @@
+import 'package:em/presentation/expenses/bloc/expense_bloc.dart';
 import 'package:em/presentation/expenses/pages/expenses_list/expense_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../base/base_view_model.dart';
 import '../cubit/home_cubit.dart';
@@ -16,7 +18,10 @@ class HomeViewModel extends BaseViewModel{
 
   List<Widget> getPages(BuildContext context){
     return [
-      const ExpenseListView(),
+      BlocProvider(
+        create: (_)=>ExpenseBloc()..add(GetAllExpenses()),
+        child: const ExpenseListView(),
+        ),
       Container(),
       Container()
     ];
