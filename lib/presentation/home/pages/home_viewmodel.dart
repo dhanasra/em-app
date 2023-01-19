@@ -8,13 +8,13 @@ import '../cubit/home_cubit.dart';
 
 class HomeViewModel extends BaseViewModel{
 
-  HomeViewModel._internal(){ start(); }
+  HomeViewModel._internal();
   static final _instance = HomeViewModel._internal();
   factory HomeViewModel() => _instance;
 
-  late final HomeCubit cubit;
-  late final PageController pageController;
-  late final int currentIndex;
+  late HomeCubit cubit;
+  late PageController pageController;
+  late int currentIndex;
 
   List<Widget> getPages(BuildContext context){
     return [
@@ -43,8 +43,6 @@ class HomeViewModel extends BaseViewModel{
   }
 
   @override
-  void dispose() {
-    cubit.close();
-  }
+  void dispose() {}
 
 }

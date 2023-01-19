@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    _viewModel = HomeViewModel();
+    _viewModel = HomeViewModel()..start();
     super.initState();
   }
 
