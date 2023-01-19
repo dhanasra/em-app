@@ -1,8 +1,12 @@
+import 'package:em/presentation/calendar/bloc/calendar_bloc.dart';
+import 'package:em/presentation/calendar/pages/calendar_view.dart';
 import 'package:em/presentation/expenses/bloc/expense_bloc.dart';
 import 'package:em/presentation/expenses/pages/expenses_list/expense_list_view.dart';
+import 'package:em/presentation/settings/pages/app_settings/app_settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../resources/date_manager.dart';
 import '../../base/base_view_model.dart';
 import '../cubit/home_cubit.dart';
 
@@ -21,9 +25,12 @@ class HomeViewModel extends BaseViewModel{
       BlocProvider(
         create: (_)=>ExpenseBloc()..add(GetAllExpenses()),
         child: const ExpenseListView(),
-        ),
-      Container(),
-      Container()
+      ),
+      BlocProvider(
+        create: (_)=>CalendarBloc()..add(GetExpensesOfDate(dateTime: getToday())),
+        child: const CalendarView()
+      ),
+      const AppSettingsView()
     ];
   }
 
