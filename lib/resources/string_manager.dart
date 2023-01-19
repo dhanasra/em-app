@@ -100,6 +100,9 @@ class AppStrings{
   static const String dynamicTheme ="dynamic_theme";
   static const String language ="language";
   static const String notificationSound ="notification_sound";
+  static const String currency ="currency";
+  static const String dateFormat ="date_format";
+  static const String carryForward ="carry_forward";
   static const String firstDay ="first_day";
   static const String defaultList ="default_list";
 
