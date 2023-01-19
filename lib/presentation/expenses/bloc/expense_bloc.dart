@@ -71,7 +71,30 @@ class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
 
   void _onRemoveExpense(RemoveExpense event, Emitter emit)async{
 
-    await expenseBox.delete(event.id);
+    var expense = event.expense;
+
+    // init userbox.
+    var userbox = Hive.box('user');
+
+    // update total balance.
+    var balance = userbox.get('balance')??0;
+    await userbox.put('balance', expense.isIncome 
+      ? balance-double.parse(expense.amount)
+      : balance+double.parse(expense.amount)
+    );
+
+    // update today's income & expense
+    var today = getDate(format: fullDate);
+    var record = userbox.get('record') ?? { today : { "income" : 0 , "expense" : 0 } };
+    var currentIncome = record[today]['income'];
+    var currentExpense = record[today]['expense'];
+    expense.isIncome ? currentIncome-=double.parse(expense.amount) : currentExpense-=double.parse(expense.amount);
+    Map<String, dynamic> newRecord = json.decode(json.encode(record));
+    newRecord[today] = { "income" : currentIncome , "expense" : currentExpense };
+    await userbox.put('record', newRecord);
+
+    await expenseBox.delete(event.expense.id);
+
     add(GetAllExpenses());
   }
 }

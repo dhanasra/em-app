@@ -51,7 +51,11 @@ class ExpenseItem extends StatelessWidget {
                     child: Text(expense.category!.tr(), style: getBodyText2Style(context, color: ColorManger.white)),
                   ),
                   const Spacer(),
-                  Text("\u20B9 ${expense.amount}", style: getSubtitle2Style(context, fontWeight: FontWeightManager.bold)),
+                  Text("\u20B9 ${expense.amount}", 
+                    style: getSubtitle2Style(context, color: expense.isIncome 
+                                ? ColorManger.success 
+                                : ColorManger.gRed,  
+                            fontWeight: FontWeightManager.bold)),
                 ]),
 
                 const Divider(height: AppSize.s32,),

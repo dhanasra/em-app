@@ -10,8 +10,10 @@ import 'package:em/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../network/model/expense.dart';
+import '../../../../utils/constants.dart';
 
 class ExpenseListView extends StatefulWidget {
   const ExpenseListView({super.key});
@@ -86,11 +88,23 @@ class _ExpenseListViewState extends State<ExpenseListView> {
       ),
       body: ListView(
         children: [
-          DateCard(balance: _viewModel.balance,),
-          ExpenseCard(
-            credit: _viewModel.currentIncome,
-            debit: _viewModel.currentExpense,
-          ),
+          
+          ValueListenableBuilder(
+            valueListenable: _viewModel.userbox.listenable(),
+            builder: (_, Box box, ___){
+              return DateCard(balance: "\u20B9 ${box.get('balance')??0}");
+            }),
+          
+          ValueListenableBuilder(
+            valueListenable: _viewModel.userbox.listenable(),
+            builder: (_, Box box, ___){
+              var record =  box.get('record') ?? defaultIncomeRecord;
+              return ExpenseCard(
+                credit: "\u20B9 ${record[_viewModel.today]['income']}",
+                debit: "\u20B9 ${record[_viewModel.today]['expense']}",
+              );
+          }),
+
           BlocBuilder<ExpenseBloc, ExpenseState>(
             buildWhen: (_, state)=>state is Loading || state is ExpensesFetched,
             builder: (_, state){
@@ -133,7 +147,7 @@ class ExpenseListBuilder extends StatelessWidget {
       itemBuilder: (_, index){
         return ExpenseItem(
           expense: expenses[index],
-          onDelete: ()=>viewModel.onDeleteItem(context, expenses[index].id),
+          onDelete: ()=>viewModel.onDeleteItem(context, expenses[index]),
           );
       });
   }

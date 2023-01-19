@@ -6,10 +6,10 @@ abstract class ExpenseEvent {}
 class GetAllExpenses extends ExpenseEvent {}
 
 class RemoveExpense extends ExpenseEvent {
-  final String id;
+  final Expense expense;
 
   RemoveExpense({
-    required this.id
+    required this.expense
   });
 }
 
