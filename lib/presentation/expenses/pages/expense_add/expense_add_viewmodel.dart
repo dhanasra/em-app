@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExpenseAddViewModel extends BaseViewModel {
 
-  ExpenseAddViewModel._internal(){ start(); }
+  ExpenseAddViewModel._internal();
   static final _instance = ExpenseAddViewModel._internal();
   factory ExpenseAddViewModel() => _instance;
 

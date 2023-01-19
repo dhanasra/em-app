@@ -28,7 +28,7 @@ class _ExpenseAddViewState extends State<ExpenseAddView> {
 
   @override
   void initState() {
-    _viewModel = ExpenseAddViewModel();
+    _viewModel = ExpenseAddViewModel()..start();
     super.initState();
   }
 
@@ -37,9 +37,9 @@ class _ExpenseAddViewState extends State<ExpenseAddView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.isIncome ? AppStrings.addExpense.tr() : AppStrings.addIncome.tr(), 
+          widget.isIncome ? AppStrings.addIncome.tr() : AppStrings.addExpense.tr(), 
           style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(
-            color: widget.isIncome ? ColorManger.error : ColorManger.success),),
+            color: widget.isIncome ? ColorManger.success : ColorManger.error),),
         elevation: AppSize.s1_5,
       ),
       body: BlocListener<ExpenseBloc, ExpenseState>(
