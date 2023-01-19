@@ -90,6 +90,9 @@
   "language": "Language",
   "notification_sound": "Notification Sound",
   "first_day": "First Day",
+  "currency": "Currency",
+  "date_format": "Date Format",
+  "carry_forward": "Carry Forward",
   "default_list": "Default List",
 
   "tasks": "TASKS",

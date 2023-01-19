@@ -54,6 +54,9 @@ dependencies:
   # Widgets
   dropdown_button2: ^1.9.2
 
+  # Calendar View
+  syncfusion_flutter_calendar: ^20.3.57
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
