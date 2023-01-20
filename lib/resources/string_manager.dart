@@ -95,6 +95,8 @@ class AppStrings{
   static const String premium ="premium";
   static const String inviteFriends ="invite_friends";
 
+  static const String setAsDateFormat = "set_as_date_format";
+
   static const String preferences ="preferences";
   static const String theme ="theme";
   static const String dynamicTheme ="dynamic_theme";

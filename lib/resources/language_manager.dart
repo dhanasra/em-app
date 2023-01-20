@@ -23,6 +23,29 @@ const List<Locale> appLocales = [
   ENGLISH_LOCALE, TAMIL_LOCALE, MALAYALAM_LOCALE, KANADAM_LOCALE, TELUGU_LOCALE, HINDI_LOCALE
 ];
 
+extension LocaleExtension on Locale {
+
+  String getLocaleString(){
+
+    if(this==ENGLISH_LOCALE){
+      return ENGLISH;
+    }else if(this==TAMIL_LOCALE){
+      return TAMIL;
+    }else if(this==MALAYALAM_LOCALE){
+      return MALAYALAM;
+    }else if(this==KANADAM_LOCALE){
+      return KANADAM;
+    }else if(this==TELUGU_LOCALE){
+      return TELUGU;
+    }else if(this==HINDI_LOCALE){
+      return HINDI;
+    }else {
+      return ENGLISH;
+    }
+  }
+
+}
+
 extension LanguageExtension on String {
 
   Locale getLocale(){

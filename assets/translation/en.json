@@ -94,6 +94,7 @@
   "date_format": "Date Format",
   "carry_forward": "Carry Forward",
   "default_list": "Default List",
+  "set_as_date_format": "Set as date format",
 
   "tasks": "TASKS",
   "completed_tasks": "Completed Tasks",

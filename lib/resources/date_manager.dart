@@ -7,10 +7,24 @@ const String date = 'dd';
 const String mWYear = 'MMMM, yyyy';
 const String fullDate = 'dd MMMM, yyyy ( EEEE )';
 
+List<String> dateFormats = [
+  'dd MMM, yyyy ( EEEE )',
+  'dd MMM, yy ( EEEE )',
+  'dd MM, yyyy ( EEEE )',
+  'dd MM, yy ( EEEE )',
+  'd MMM, yyyy',
+  'dd MMM, yy',
+  'dd / MM / yyyy',
+  'd / MMM / yy',
+  'dd - MM - yyyy',
+];
+
 DateTime getToday(){
   var now = DateTime.now();
   return DateTime(now.year, now.month, now.day);
 }
+
+bool get isNight => DateTime.now().hour>18;
 
 String getDate({required String format}){
   return DateFormat(format).format(DateTime.now());
