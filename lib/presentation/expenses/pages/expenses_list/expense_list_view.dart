@@ -99,9 +99,11 @@ class _ExpenseListViewState extends State<ExpenseListView> {
             valueListenable: _viewModel.userbox.listenable(),
             builder: (_, Box box, ___){
               var record =  box.get('record') ?? defaultIncomeRecord;
+              var todayrecord = record[_viewModel.today] ?? defaultIncomeRecord[_viewModel.today];
+
               return ExpenseCard(
-                credit: "\u20B9 ${record[_viewModel.today]['income']}",
-                debit: "\u20B9 ${record[_viewModel.today]['expense']}",
+                credit: "\u20B9 ${todayrecord['income']}",
+                debit: "\u20B9 ${todayrecord['expense']}",
               );
           }),
 

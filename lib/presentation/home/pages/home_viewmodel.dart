@@ -39,7 +39,7 @@ class HomeViewModel extends BaseViewModel{
   }
 
   void onTap(int index){
-    pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.linear);
+    pageController.jumpToPage(index);
   }
 
   @override
