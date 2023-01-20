@@ -23,6 +23,7 @@ Future<void> initAppModule() async{
 
   //Hive Box open
   await Hive.openBox("user");
+  await Hive.openBox("settings");
   
   final boxCollection = await BoxCollection.open(
     'ExpensoBox', 

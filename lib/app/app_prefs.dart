@@ -1,4 +1,5 @@
 
+import 'package:em/resources/date_manager.dart';
 import 'package:em/resources/language_manager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -10,12 +11,12 @@ const String PREFS_KEY_THEME = "PREFS_KEY_THEME";
 class AppPreferences{
 
   Future<void> saveLanguage(String lang) async{
-    final Box box = await Hive.openBox('settings');
+    final Box box = Hive.box('settings');
     await box.put(PREFS_KEY_LANG, lang);
   }
 
   Future<String> getAppLanguage() async{
-    final Box box = await Hive.openBox('settings');
+    final Box box = Hive.box('settings');
     String? language = box.get(PREFS_KEY_LANG);
     if(language !=null && language.isNotEmpty){
       return language;
@@ -25,17 +26,24 @@ class AppPreferences{
   }
 
   Future<void> saveTheme(String theme) async{
-    final Box box = await Hive.openBox('settings');
+    final Box box =  Hive.box('settings');
     await box.put(PREFS_KEY_THEME, theme);
   }
 
   Future<String> getAppTheme() async{
-    final Box box = await Hive.openBox('settings');
+    final Box box =  Hive.box('settings');
     String? theme = box.get(PREFS_KEY_THEME);
-    if(theme !=null && theme.isNotEmpty){
-      return theme;
+
+    bool isDynamicThemeEnabled = box.get('dynamic-theme')??false;
+
+    if(isDynamicThemeEnabled && isNight){
+      return THEME_DARK;
     }else{
-      return THEME_LIGHT;
+      if(theme !=null && theme.isNotEmpty){
+        return theme;
+      }else{
+        return THEME_LIGHT;
+      }
     }
   }
 
