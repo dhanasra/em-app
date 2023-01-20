@@ -1,11 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:em/app/app_cubits/themes_cubit.dart';
+import 'package:em/presentation/settings/pages/app_settings/app_settings_viewmodel.dart';
+import 'package:em/presentation/settings/widgets/currency_picker.dart';
+import 'package:em/presentation/settings/widgets/date_slider.dart';
+import 'package:em/resources/date_manager.dart';
+import 'package:em/resources/language_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../resources/color_manager.dart';
 import '../../../../resources/font_manager.dart';
 import '../../../../resources/string_manager.dart';
 import '../../../../resources/style_manager.dart';
 import '../../../../resources/values_manager.dart';
+import '../../widgets/language_bottomsheet.dart';
+import '../../widgets/theme_builder.dart';
 
 class AppSettingsView extends StatefulWidget {
   const AppSettingsView({super.key});
@@ -15,6 +24,16 @@ class AppSettingsView extends StatefulWidget {
 }
 
 class _AppSettingsViewState extends State<AppSettingsView> {
+
+  late AppSettingsViewModel _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = AppSettingsViewModel();
+    _viewModel.start();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +48,20 @@ class _AppSettingsViewState extends State<AppSettingsView> {
               icon: Icon(Icons.more_horiz, color: ColorManger.grey), splashRadius: AppSize.s18)
         ],
       ),
-      body: const OptionsList(),
+      body: OptionsList(
+        viewModel: _viewModel,
+      ),
     );
   }
 }
 
 
 class OptionsList extends StatelessWidget {
-  const OptionsList({Key? key}) : super(key: key);
+  final AppSettingsViewModel viewModel;
+  const OptionsList({
+    Key? key,
+    required this.viewModel  
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,34 +103,86 @@ class OptionsList extends StatelessWidget {
           child: Text(AppStrings.preferences,
               style: getRegularStyle(color: ColorManger.grey, fontSize: FontSize.s14)).tr(),
         ),
+        
         ListTile(
           title: Text(AppStrings.theme, style: Theme.of(context).textTheme.subtitle2).tr(),
-          // trailing: const ThemeBuilder(),
+          trailing: const ThemeBuilder(),
         ),
+
         const Divider(height: 0,),
+
         ListTile(
           title: Text(AppStrings.dynamicTheme, style: Theme.of(context).textTheme.subtitle2).tr(),
-          trailing: Text(AppStrings.on,
-              style: getMediumStyle(color: ColorManger.grey, fontSize: FontSize.s16)),
-          onTap: (){},
+          trailing: ValueListenableBuilder(
+            valueListenable: viewModel.dynamicThemeNotifier, 
+            builder: (_,__,___){
+              return Text(viewModel.dynamicThemeNotifier.value ? AppStrings.on : AppStrings.off).tr();
+            }),
+          onTap: (){
+            context.read<ThemesCubit>().switchDynamicTheme(!viewModel.dynamicThemeNotifier.value);
+            viewModel.dynamicThemeNotifier.value = !viewModel.dynamicThemeNotifier.value;
+          },
         ),
+
         const Divider(height: 0,),
         ListTile(
           title: Text(AppStrings.language, style: Theme.of(context).textTheme.subtitle2).tr(),
+          trailing: ValueListenableBuilder(
+            valueListenable: viewModel.localeNotifier, 
+            builder: (_,__,___){
+              return Text(viewModel.localeNotifier.value).tr();
+            }),
           onTap: (){
-            // showModalBottomSheet(
-            //     context: context,
-            //     builder: (_)=>const LanguageBottomSheet()
-            // );
+            showModalBottomSheet(
+                context: context,
+                builder: (_)=> LanguageBottomSheet(
+                  onChanged: (String lang)=>viewModel.localeNotifier.value = lang.getLocaleText(),
+                )
+            );
           },
         ),
         const Divider(height: 0,),
         ListTile(
-          title: Text(AppStrings.currency, style: Theme.of(context).textTheme.subtitle2).tr()
+          title: Text(AppStrings.currency, style: Theme.of(context).textTheme.subtitle2).tr(),
+          trailing: ValueListenableBuilder(
+            valueListenable: viewModel.currencyNotifier, 
+            builder: (_,__,___){
+              return Text(viewModel.currencyNotifier.value);
+            }),
+          onTap: (){
+
+            showDialog(
+              context: context, 
+              builder: (_){
+                return Dialog(
+                  child: CurrencyPicker(
+                    onSelected: (v)=>viewModel.currencyNotifier.value = v,
+                  ),
+                );
+              });
+          },
         ),
         const Divider(height: 0,),
         ListTile(
-          title: Text(AppStrings.dateFormat, style: Theme.of(context).textTheme.subtitle2).tr()
+          title: Text(AppStrings.dateFormat, style: Theme.of(context).textTheme.subtitle2).tr(),
+          trailing: ValueListenableBuilder(
+            valueListenable: viewModel.dateFormatNotifier, 
+            builder: (_,__,___){
+              return Text(getDate(format: viewModel.dateFormatNotifier.value));
+            }),
+          onTap: (){
+
+            showDialog(
+              context: context, 
+              builder: (_){
+                return Dialog(
+                  child: DateFormatPicker(
+                    onPicked: (v)=>viewModel.dateFormatNotifier.value = v,
+                    initial: viewModel.dateFormat,
+                  )
+                );
+            });
+          },
         ),
         const Divider(height: 0,),
         ListTile(
