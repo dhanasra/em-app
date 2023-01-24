@@ -6,8 +6,6 @@ import 'package:em/network/model/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../../../resources/date_manager.dart';
-
 part 'expense_event.dart';
 part 'expense_state.dart';
 
@@ -19,6 +17,7 @@ class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
   }
 
   var expenseBox = instance.get<CollectionBox>(instanceName: 'expenses');
+  final Box wallet = Hive.box('wallet');
 
   void _onGetAllExpenses(GetAllExpenses event, Emitter emit)async{
     emit(Loading());
@@ -35,32 +34,28 @@ class ExpenseBloc extends Bloc<ExpenseEvent, ExpenseState> {
   void _onAddExpense(AddExpense event, Emitter emit)async{
     emit(Loading());
 
-    var id = DateTime.now().millisecondsSinceEpoch.toString();
-    // init userbox.
-    var userbox = Hive.box('user');
+    var id = DateTime.now().millisecondsSinceEpoch;
+    var amount = double.parse(event.amount);
 
-    // update total balance.
-    var balance = userbox.get('balance')??0;
-    await userbox.put('balance', event.isIncome 
-      ? balance+double.parse(event.amount)
-      : balance-double.parse(event.amount)
+    // update total income / expense, balance.
+    if(event.isIncome){
+      var income = wallet.get('income')??0;
+      wallet.put('income', amount + income);
+    }else{
+      var expense = wallet.get('expense')??0;
+      wallet.put('income', amount - expense);
+    }
+    var balance = wallet.get('balance')??0;  
+    wallet.put('balance', event.isIncome 
+      ? balance + amount
+      : balance - amount
     );
 
-    // update today's income & expense
-    var today = getDate(format: fullDate);
-    var record = userbox.get('record') ?? { today : { "income" : 0 , "expense" : 0 } };
-    var currentIncome = record[today]['income'];
-    var currentExpense = record[today]['expense'];
-    event.isIncome ? currentIncome+=double.parse(event.amount) : currentExpense+=double.parse(event.amount);
-    Map<String, dynamic> newRecord = json.decode(json.encode(record));
-    newRecord[today] = { "income" : currentIncome , "expense" : currentExpense };
-    await userbox.put('record', newRecord);
-
-    await expenseBox.put(id,{
+    await expenseBox.put(id.toString(),{
       'id' : id,
       'dateTime': event.dateTime,
       'isIncome': event.isIncome,
-      'amount': event.amount,
+      'amount': amount,
       'remark': event.remark,
       'category': event.category,
       'paymentMode': event.paymentMode

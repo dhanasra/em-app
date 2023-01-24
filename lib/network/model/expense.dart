@@ -7,8 +7,8 @@ class Expense extends Equatable{
   final bool isIncome;
   final double amount;
   final String? remark;
-  final int category;
-  final int? paymentMode;
+  final String category;
+  final String? paymentMode;
 
   const Expense({
     required this.id,

@@ -16,7 +16,7 @@ class RemoveExpense extends ExpenseEvent {
 class AddExpense extends ExpenseEvent {
 
   final bool isIncome;
-  final String dateTime;
+  final int dateTime;
   final String amount;
   final String? remark;
   final String? category;
