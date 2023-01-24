@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 const String day = 'EEEE';
 const String date = 'dd';
 const String mWYear = 'MMMM, yyyy';
+const String fullDateMin = 'EEE, dd MMM yyyy';
 const String fullDate = 'dd MMMM, yyyy ( EEEE )';
 
 List<String> dateFormats = [
@@ -28,6 +29,10 @@ bool get isNight => DateTime.now().hour>18;
 
 String getDate({required String format}){
   return DateFormat(format).format(DateTime.now());
+}
+
+String getTime(int dateTime){
+  return DateFormat('hh : mm a').format(DateTime.fromMicrosecondsSinceEpoch(dateTime));
 }
 
 String formatDate({required String format, required DateTime dateTime}){

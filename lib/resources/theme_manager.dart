@@ -58,7 +58,7 @@ ThemeData getApplicationTheme(String theme){
     canvasColor: canvasColor,
     colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: ColorManger.grey,
-        primary: ColorManger.primary,
+        primary: darkPrimary,
     ),
     primarySwatch: ColorManger.getSwatch(color: ColorManger.primary),
     unselectedWidgetColor: ColorManger.grey1,
@@ -104,15 +104,32 @@ ThemeData getApplicationTheme(String theme){
       style: ElevatedButton.styleFrom(
         elevation: 0,
         textStyle: getRegularStyle(color: white, fontSize: FontSize.s14),
-        backgroundColor: ColorManger.primary,
-        minimumSize: const Size.fromHeight(50),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSize.s4))
+        backgroundColor: ColorManger.darkPrimary,
+        minimumSize: const Size.fromHeight(45),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s4),
+          side: BorderSide(color: darkPrimary, width: 1)  
+        )
+      )
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size.fromHeight(45),
+        textStyle: getRegularStyle(color: darkPrimary, fontSize: FontSize.s14),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s4),
+          side: BorderSide(color: darkPrimary, width: 2)  
+        )
       )
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        textStyle: MaterialStateProperty.all(getRegularStyle(color: ColorManger.primary, fontSize: FontSize.s14)),
-        foregroundColor: MaterialStateProperty.all(ColorManger.primary)
+        textStyle: MaterialStateProperty.all(TextStyle(
+          color: darkPrimary,
+          fontWeight: FontWeightManager.semiBold,
+          fontSize: FontSize.s16
+        )),
+        foregroundColor: MaterialStateProperty.all(ColorManger.darkPrimary)
       ),
     ),
     // text theme
@@ -166,10 +183,22 @@ ThemeData getApplicationTheme(String theme){
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: shadowColor,
       labelPadding: const EdgeInsets.symmetric(vertical: 6),
+      indicator: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppSize.s8),
+        color: ColorManger.darkPrimary,
+        boxShadow: [
+          BoxShadow(
+            color: ColorManger.darkPrimary.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: const Offset(0, 1), 
+          ),
+        ]
+      ),
       labelStyle: TextStyle(
         height: 1.5,
         color: textColor,
-        fontSize: FontSize.s16,
+        fontSize: FontSize.s14,
         fontWeight: FontWeightManager.regular
       ),
     ),
@@ -179,12 +208,10 @@ ThemeData getApplicationTheme(String theme){
       contentPadding: const EdgeInsets.all(AppPadding.p12),
       hintStyle: TextStyle(
         color: shadowColor,
-        fontSize: FontSize.s16,
         fontWeight: FontWeightManager.medium
       ),
       labelStyle: TextStyle(
         color: textColor,
-        fontSize: FontSize.s14,
         fontWeight: FontWeightManager.medium
       ),
       floatingLabelStyle: TextStyle(
@@ -193,30 +220,30 @@ ThemeData getApplicationTheme(String theme){
         fontWeight: FontWeightManager.regular
       ),
       prefixStyle: TextStyle(
-        color: ColorManger.primary,
+        color: darkPrimary,
         fontSize: FontSize.s18,
         fontWeight: FontWeightManager.regular
       ),
       errorStyle: getRegularStyle(color: ColorManger.error),
       disabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
-        borderRadius: const BorderRadius.all(Radius.circular(2.5))
+        borderRadius: BorderRadius.circular(AppSize.s8)
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
-        borderRadius: const BorderRadius.all(Radius.circular(2.5))
+        borderRadius: BorderRadius.circular(AppSize.s8)
       ),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: ColorManger.grey, width: 0.5),
-          borderRadius: const BorderRadius.all(Radius.circular(2.5))
+          borderRadius: BorderRadius.circular(AppSize.s8)
       ),
       errorBorder:  OutlineInputBorder(
           borderSide: BorderSide(color: ColorManger.error, width: AppSize.s1_5),
-          borderRadius: const BorderRadius.all(Radius.circular(AppSize.s4))
+          borderRadius: BorderRadius.circular(AppSize.s8)
       ),
       focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: ColorManger.primary, width: AppSize.s1_5),
-          borderRadius: const BorderRadius.all(Radius.circular(AppSize.s4))
+          borderRadius: BorderRadius.circular(AppSize.s8)
       ),
     ),
 
