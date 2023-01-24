@@ -58,10 +58,10 @@ class _DashboardViewState extends State<DashboardView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Transactions', style: Theme.of(context).textTheme.headline6),
+                    Text('Transactions History', style: Theme.of(context).textTheme.subtitle1),
                     TextButton(
                       onPressed: (){}, 
-                      child: Text('See All', style: Theme.of(context).textTheme.subtitle2!.copyWith(color: ColorManger.primary))
+                      child: const Text('See All')
                     )
                   ],
                 )), 
