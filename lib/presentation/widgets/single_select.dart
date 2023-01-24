@@ -5,14 +5,16 @@ import '../../resources/style_manager.dart';
 import '../../resources/values_manager.dart';
 
 class SingleSelect extends StatefulWidget {
-  final List<String> items;
+  final List<String>? items;
+  final Map? itemIconMap;
   final String? preSelected;
   final String? label;
   final ValueChanged onChanged;
 
   const SingleSelect({
     super.key,
-    required this.items,
+    this.items,
+    this.itemIconMap,
     this.label,
     this.preSelected,
     required this.onChanged
@@ -24,7 +26,7 @@ class SingleSelect extends StatefulWidget {
 
 class _SingleSelectState extends State<SingleSelect> {
 
-  String? selected;
+  dynamic selected;
 
   @override
   void initState() {
@@ -35,7 +37,25 @@ class _SingleSelectState extends State<SingleSelect> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(child: DropdownButton2(
-      items: widget.items.map((e) => DropdownMenuItem(value: e,child: Text(e))).toList(),
+      items: widget.items!=null 
+        ? widget.items!.map(
+          (e) => DropdownMenuItem(
+            value: e,
+            child: Text(e)
+          )).toList()
+        : widget.itemIconMap!.keys.map(
+          (e) => DropdownMenuItem(
+            value: e,
+            child: Row(
+              children: [
+                Icon(widget.itemIconMap![e], size: 14),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Text(e),
+                )
+              ],
+            ))
+          ).toList(),
       onChanged: (value) {
         setState(() {
           selected = value;
@@ -50,13 +70,14 @@ class _SingleSelectState extends State<SingleSelect> {
       value: selected,
       buttonPadding: const EdgeInsets.only(right: AppPadding.p12),
       buttonDecoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(2.5)),
+        borderRadius: BorderRadius.circular(AppSize.s8),
         border: Border.all(
           color: Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.color,
           width: Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.width
         )
       ),
-      style: getSubtitle2Style(context),
+      style: getBodyText1Style(context),
+      dropdownMaxHeight: 250,
       dropdownPadding: const EdgeInsets.symmetric(vertical: 3),
       dropdownDecoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),

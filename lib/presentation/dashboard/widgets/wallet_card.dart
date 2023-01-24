@@ -21,7 +21,7 @@ class WalletCard extends StatelessWidget {
         gradient: const LinearGradient(
                   colors: [
                     Color(0xFF2c3e50),
-                    Color(0xFF3498db),
+                    Color(0xCC2c3e50),
                     Color(0xFF2c3e50),
                   ],
                   begin: Alignment.topLeft,
