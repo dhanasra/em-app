@@ -7,7 +7,7 @@ import '../../../resources/values_manager.dart';
 
 class DatePickerField extends StatefulWidget {
   final TextEditingController controller;
-  final ValueChanged onDatePicked;
+  final ValueChanged<int> onDatePicked;
   const DatePickerField({
     super.key,
     required this.controller,
@@ -41,7 +41,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
         decoration: const InputDecoration(
           suffixIcon: Icon(FontAwesomeIcons.calendarWeek, size: AppSize.s20)
         ),
-        style: getSubtitle2Style(context),
+        style: getBodyText1Style(context),
       ),
     );
   }
@@ -57,9 +57,9 @@ class _DatePickerFieldState extends State<DatePickerField> {
       setState(() {
         selectedDate = picked;
       });
-      var pickedDate = formatDate(format: fullDate, dateTime: selectedDate);
+      widget.onDatePicked(picked.millisecondsSinceEpoch);
+      var pickedDate = formatDate(format: fullDateMin, dateTime: selectedDate);
       widget.controller.text = pickedDate;
-      widget.onDatePicked(picked.millisecondsSinceEpoch.toString());
     }
   }
 }

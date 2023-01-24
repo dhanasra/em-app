@@ -26,9 +26,9 @@ class _PaymentModesState extends State<PaymentModes> {
   void initState() {
     selected = 0;
     items = [
-      AppStrings.cash,
-      AppStrings.online,
-      AppStrings.upi
+      AppStrings.cash.tr(),
+      AppStrings.online.tr(),
+      AppStrings.upi.tr()
     ];
     widget.paymentModeController.text = AppStrings.cash;
     super.initState();
@@ -52,18 +52,18 @@ class _PaymentModesState extends State<PaymentModes> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: selected == index 
-                        ? Theme.of(context).primaryColor 
+                        ? Theme.of(context).primaryColorDark 
                         : Theme.of(context).dividerColor,
                       width: 0.5
                     ),
                     color: selected == index 
-                        ? Theme.of(context).primaryColor 
+                        ? Theme.of(context).primaryColorDark 
                         : Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(AppSize.s4)
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    items[index].tr(),
+                    items[index],
                     style: getBodyText2Style(context, color: selected == index 
                         ? Theme.of(context).scaffoldBackgroundColor 
                         : null),

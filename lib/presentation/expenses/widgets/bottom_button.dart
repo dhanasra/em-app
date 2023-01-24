@@ -21,8 +21,8 @@ class BottomButton extends StatelessWidget {
           color: Theme.of(context).scaffoldBackgroundColor,
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).shadowColor,
-              blurRadius: AppSize.s1_5
+              color: Theme.of(context).dividerColor,
+              blurRadius: AppSize.s4
             )
           ]
         ),
@@ -34,15 +34,15 @@ class BottomButton extends StatelessWidget {
             onTap: onAddNew,
             child: Container(
               alignment: Alignment.center,
-              height: AppSize.s55,
+              height: AppSize.s50,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: ColorManger.primary
+                  color: ColorManger.darkPrimary
                 ),
                 color: ColorManger.white,
                 borderRadius: BorderRadius.circular(AppSize.s4)
               ),
-              child: Text('Save & Add New', style: getSubtitle2Style(context, color: ColorManger.primary),)
+              child: Text('Save & Add New', style: getBodyText1Style(context, color: ColorManger.darkPrimary),)
             ),
           )),
           Expanded(
@@ -51,16 +51,16 @@ class BottomButton extends StatelessWidget {
             onTap: onAdd,
             child: Container(
               margin: const EdgeInsets.only(left: AppMargin.m12),
-              height: AppSize.s55,
+              height: AppSize.s50,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: ColorManger.primary
+                  color: ColorManger.darkPrimary
                 ),
-                color: ColorManger.primary,
+                color: ColorManger.darkPrimary,
                 borderRadius: BorderRadius.circular(AppSize.s4)
               ),
-              child: Text('Save', style: getSubtitle2Style(context, color: ColorManger.white),)
+              child: Text('Save', style: getBodyText1Style(context, color: ColorManger.white),)
             ),
           )),
         ],
