@@ -1,4 +1,6 @@
 import 'package:em/network/model/expense.dart';
+import 'package:em/resources/date_manager.dart';
+import 'package:em/resources/font_manager.dart';
 import 'package:em/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -32,15 +34,29 @@ class TransactItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(expense.category.toString(), style: Theme.of(context).textTheme.headline6),
-                const SizedBox(height: AppSize.s4),
-                Text(expense.remark??'No remarks', style: Theme.of(context).textTheme.bodyText2!)
+                Text(expense.category.toString(), style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                  fontSize: 15
+                )),
+                const SizedBox(height: AppSize.s8),
+                Text(expense.paymentMode??'Not Specified', style: Theme.of(context).textTheme.bodyText2!)
               ],
             ),
           )),
-          Text('${expense.isIncome?'':'-'} \u20B9 ${expense.amount}', 
-            style: Theme.of(context).textTheme.subtitle2!
-              .copyWith(color: expense.isIncome ? ColorManger.success : ColorManger.error))
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('${expense.isIncome?'':'-'} \u20B9 ${expense.amount}', 
+                style: Theme.of(context).textTheme.bodyText1!
+                  .copyWith(
+                    color: expense.isIncome ? ColorManger.success : ColorManger.error,
+                    fontSize: FontSize.s16
+                  )),
+              const SizedBox(height: 6),
+              Text(getTime(expense.dateTime), style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                fontSize: 12
+              ))
+            ],
+          )
         ],
       ),
     );
