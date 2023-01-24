@@ -40,7 +40,7 @@ class _AppSettingsViewState extends State<AppSettingsView> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: (){},
+            onPressed: ()=>Navigator.pop(context),
             icon: Icon(Icons.arrow_back_ios, color: ColorManger.grey), splashRadius: AppSize.s18),
         title: const Text(AppStrings.settings).tr(),
         actions: [
