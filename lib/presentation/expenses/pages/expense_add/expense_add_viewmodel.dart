@@ -1,10 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:em/presentation/base/base_view_model.dart';
 import 'package:em/presentation/expenses/bloc/expense_bloc.dart';
 import 'package:em/resources/date_manager.dart';
-import 'package:em/resources/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ExpenseAddViewModel extends BaseViewModel {
 
@@ -19,9 +18,9 @@ class ExpenseAddViewModel extends BaseViewModel {
   late TextEditingController remarksController;
   late GlobalKey<FormState> formKey;
   
-  late String pickedDateTime;
+  late int pickedDateTime;
 
-  late List<String> categories;
+  late Map<String, IconData> categories;
 
   @override
   void start() {
@@ -32,20 +31,29 @@ class ExpenseAddViewModel extends BaseViewModel {
     remarksController = TextEditingController();
     formKey = GlobalKey<FormState>();
 
-    pickedDateTime = DateTime.now().millisecondsSinceEpoch.toString();
+    pickedDateTime = DateTime.now().millisecondsSinceEpoch;
 
-    categories = [
-      AppStrings.investment.tr(),
-      AppStrings.emi.tr(),
-      AppStrings.inHand.tr(),
-      AppStrings.home.tr(),
-      AppStrings.travel.tr(),
-      AppStrings.flipkart.tr(),
-      AppStrings.bonus.tr(),
-      AppStrings.rent.tr()
-    ];
+    categories = {
+      'Housing': FontAwesomeIcons.house,
+      'Transportation': FontAwesomeIcons.bus,
+      'Food': FontAwesomeIcons.bowlFood,
+      'Utilities': FontAwesomeIcons.piedPiper,
+      'Insurance': FontAwesomeIcons.shield,
+      'Medical & Healthcare': FontAwesomeIcons.stethoscope,
+      'Saving': FontAwesomeIcons.floppyDisk,
+      'Investing': FontAwesomeIcons.moneyBill,
+      'Debt': FontAwesomeIcons.moneyBill1,
+      'Gym': FontAwesomeIcons.fire,
+      'Cloths & Shoes': FontAwesomeIcons.shoePrints,
+      'Gift': FontAwesomeIcons.gift,
+      'Personal': FontAwesomeIcons.person,
+      'Movie': FontAwesomeIcons.film,
+      'Restarant': FontAwesomeIcons.hotel,
+      'Entertainment': FontAwesomeIcons.music,
+      'Miscellaneous': FontAwesomeIcons.info
+    };
 
-    dateController.text = getDate(format: fullDate);
+    dateController.text = getDate(format: fullDateMin);
   }
 
   void onAddClick(BuildContext context, {required bool isIncome}){

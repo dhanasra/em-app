@@ -41,9 +41,11 @@ class HomeViewModel extends BaseViewModel{
   }
 
   void onTap(BuildContext context, int index){
-    if(index==3){
+    if(index==2){
+      Navigator.of(context).pushNamed(Routes.report);
+      return;
+    }else if(index==3){
       Navigator.of(context).pushNamed(Routes.settings);
-
       return;
     }
     pageController.jumpToPage(index);
