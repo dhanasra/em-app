@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class Expense extends Equatable{
 
-  final String id;
-  final String dateTime;
+  final int id;
+  final int dateTime;
   final bool isIncome;
-  final String amount;
+  final double amount;
   final String? remark;
-  final String? category;
-  final String? paymentMode;
+  final int category;
+  final int? paymentMode;
 
   const Expense({
     required this.id,
@@ -17,7 +17,7 @@ class Expense extends Equatable{
     required this.amount,
     this.remark,
     this.paymentMode,
-    this.category
+    required this.category
   });
 
   factory Expense.fromJson(Map<String, dynamic> json) {

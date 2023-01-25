@@ -23,11 +23,21 @@ Future<void> initAppModule() async{
 
   //Hive Box open
   await Hive.openBox("user");
-  await Hive.openBox("settings");
+  
+  final settingsBox = await Hive.openBox("settings");
+  final walletBox = await Hive.openBox("wallet");
+  
+  if(settingsBox.get('init')??true){
+    settingsBox.put('init', false);
+
+    walletBox.put('income', 0);
+    walletBox.put('expense', 0);
+    walletBox.put('balance', 0);
+  }
   
   final boxCollection = await BoxCollection.open(
     'ExpensoBox', 
-    {'expenses', 'settings', 'user'}, 
+    {'expenses', 'settings', 'user', 'wallet'}, 
     path: appDocDirectory.path
   );
   final expenseBox = await boxCollection.openBox<Map>('expenses');

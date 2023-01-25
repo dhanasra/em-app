@@ -33,7 +33,7 @@ class ExpenseListViewModel extends BaseViewModel {
     // getting today's income & expense
     today = getDate(format: fullDate);
     record = userbox.get('record') ?? defaultIncomeRecord;
-    var todayrecord = userbox.get('record')[today] ?? defaultIncomeRecord[today];
+    var todayrecord = record[today] ?? defaultIncomeRecord[today];
     currentIncome = "\u20B9 ${todayrecord['income']}";
     currentExpense = "\u20B9 ${todayrecord['expense']}";
   }

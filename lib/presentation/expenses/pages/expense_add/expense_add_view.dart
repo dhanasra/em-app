@@ -40,7 +40,6 @@ class _ExpenseAddViewState extends State<ExpenseAddView> {
           widget.isIncome ? AppStrings.addIncome.tr() : AppStrings.addExpense.tr(), 
           style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(
             color: widget.isIncome ? ColorManger.success : ColorManger.error),),
-        elevation: AppSize.s1_5,
       ),
       body: BlocListener<ExpenseBloc, ExpenseState>(
         listener: (_, state){
@@ -79,6 +78,69 @@ class ExpenseAddFields extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: AppPadding.p24, horizontal: AppPadding.p4),
       shrinkWrap: true,
       children: [
+
+        TabBar(
+          indicator: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              25.0,
+            ),
+            color: Colors.green,
+          ),
+
+          tabs: [
+            Tab(child: Text('Income')),
+            Tab(child: Text('Expense'))
+          ]),  
+        Container(
+          decoration: BoxDecoration(
+            color: ColorManger.lightGrey,
+            borderRadius: BorderRadius.circular(AppSize.s8)
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorManger.darkPrimary,
+                  borderRadius: BorderRadius.circular(AppSize.s8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorManger.darkPrimary.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 2,
+                      offset: const Offset(0, 1), // changes position of shadow
+                    ),
+                  ]
+                ),
+                child: Text('Income', style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white)),
+              )),
+              Expanded(
+                child: Container(
+                padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorManger.lightGrey,
+                  borderRadius: BorderRadius.circular(AppSize.s8)
+                ),
+                child: Text('Expense', style: Theme.of(context).textTheme.bodyText1),
+              )),
+              Expanded(
+                child: Container(
+                padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorManger.lightGrey,
+                  borderRadius: BorderRadius.circular(AppSize.s8)
+                ),
+                child: Text('Transfer', style: Theme.of(context).textTheme.bodyText1),
+              )),
+            ],
+          ),
+        ),
+
+        SizedBox(height: AppSize.s12),
 
         DatePickerField(
           controller: viewModel.dateController,

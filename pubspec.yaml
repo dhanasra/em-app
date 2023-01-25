@@ -12,7 +12,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.6
-  
+   
   # For Language Translations
   easy_localization: ^3.0.1
 
@@ -54,7 +54,8 @@ dependencies:
   # Widgets
   dropdown_button2: ^1.9.2
   carousel_slider: ^4.2.1
-
+  animated_bottom_navigation_bar: ^1.1.0+1
+  
   # Calendar View
   syncfusion_flutter_calendar: ^20.3.57
 
@@ -73,17 +74,17 @@ flutter:
     - assets/translation/
 
   fonts:
-    - family: Poppins
+    - family: jakarta
       fonts:
-        - asset: assets/fonts/poppins_extra_bold.ttf
+        - asset: assets/fonts/jakarta_extra_bold.ttf
           weight: 900
-        - asset: assets/fonts/poppins_bold.ttf
+        - asset: assets/fonts/jakarta_bold.ttf
           weight: 800
-        - asset: assets/fonts/poppins_semi_bold.ttf
+        - asset: assets/fonts/jakarta_semi_bold.ttf
           weight: 700
-        - asset: assets/fonts/poppins_medium.ttf
+        - asset: assets/fonts/jakarta_medium.ttf
           weight: 500
-        - asset: assets/fonts/poppins_regular.ttf
+        - asset: assets/fonts/jakarta_regular.ttf
           weight: 300
-        - asset: assets/fonts/poppins_light.ttf
+        - asset: assets/fonts/jakarta_light.ttf
           weight: 100

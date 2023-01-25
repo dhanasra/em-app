@@ -76,7 +76,7 @@ ThemeData getApplicationTheme(String theme){
     ),
     // app bar theme
     appBarTheme: AppBarTheme(
-      centerTitle: false,
+      centerTitle: true,
       color: white,
       actionsIconTheme: IconThemeData(color: ColorManger.grey),
       foregroundColor: textColor,
@@ -118,23 +118,18 @@ ThemeData getApplicationTheme(String theme){
     // text theme
     textTheme: TextTheme(
       headline1: getSemiBoldStyle(color: textColor, fontSize: FontSize.s16),
-      headline2: getBoldStyle(color: textColor, fontSize: FontSize.s20),
+      headline2: getSemiBoldStyle(color: textColor, fontSize: FontSize.s26),
       headline3: getBoldStyle(color: textColor, fontSize: FontSize.s22),
       headline4: getBoldStyle(color: textColor, fontSize: FontSize.s24),
       headline5: getBoldStyle(color: textColor, fontSize: FontSize.s26),
-      headline6: getBoldStyle(color: textColor, fontSize: FontSize.s20),
+      headline6: getSemiBoldStyle(color: textColor, fontSize: FontSize.s18),
       subtitle1: TextStyle(
         height: 1.5,
         color: textColor,
-        fontSize: FontSize.s18,
-        fontWeight: FontWeightManager.medium
+        fontSize: FontSize.s17,
+        fontWeight: FontWeightManager.regular
       ),
-      subtitle2: TextStyle(
-        height: 1.5,
-        color: textColor,
-        fontSize: FontSize.s16,
-        fontWeight: FontWeightManager.medium
-      ),
+      subtitle2: getSemiBoldStyle(color: textColor, fontSize: FontSize.s16),
       caption: TextStyle(
         height: 1.5,
         color: textColor
@@ -230,7 +225,8 @@ ThemeData getApplicationTheme(String theme){
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: ColorManger.primary,
       unselectedItemColor: ColorManger.grey,
-      backgroundColor: white,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
       elevation: 20,
     )
   );

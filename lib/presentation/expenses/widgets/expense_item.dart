@@ -19,65 +19,65 @@ class ExpenseItem extends StatelessWidget {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p18),
-            child: Text(formatDateString(format: fullDate, dateTime: expense.dateTime), style: getCaptionStyle(context))),
-          Container(
-            color: Theme.of(context).canvasColor,
-            margin: const EdgeInsets.only(top: AppMargin.m8, bottom: AppMargin.m18),
-            padding: const EdgeInsets.all(AppPadding.p18),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                children: [
-                  if(expense.paymentMode!=null && expense.paymentMode!.isNotEmpty)
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorManger.primary,
-                      borderRadius: BorderRadius.circular(AppSize.s2)
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8, vertical: AppPadding.p4),
-                    child: Text(expense.paymentMode!.tr(), style: getBodyText2Style(context, color: ColorManger.white)),
-                  ),
-                  if(expense.category!=null && expense.category!.isNotEmpty)
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorManger.primary,
-                      borderRadius: BorderRadius.circular(AppSize.s2)
-                    ),
-                    margin: const EdgeInsets.only(left: AppMargin.m12),
-                    padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8, vertical: AppPadding.p4),
-                    child: Text(expense.category!.tr(), style: getBodyText2Style(context, color: ColorManger.white)),
-                  ),
-                  const Spacer(),
-                  Text("\u20B9 ${expense.amount}", 
-                    style: getSubtitle2Style(context, color: expense.isIncome 
-                                ? ColorManger.success 
-                                : ColorManger.gRed,  
-                            fontWeight: FontWeightManager.bold)),
-                ]),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: AppPadding.p18),
+          //   child: Text(formatDateString(format: fullDate, dateTime: expense.dateTime.toString()), style: getCaptionStyle(context))),
+          // Container(
+          //   color: Theme.of(context).canvasColor,
+          //   margin: const EdgeInsets.only(top: AppMargin.m8, bottom: AppMargin.m18),
+          //   padding: const EdgeInsets.all(AppPadding.p18),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Row(
+          //       children: [
+          //         if(expense.paymentMode!=null)
+          //         Container(
+          //           decoration: BoxDecoration(
+          //             color: ColorManger.primary,
+          //             borderRadius: BorderRadius.circular(AppSize.s2)
+          //           ),
+          //           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8, vertical: AppPadding.p4),
+          //           child: Text(expense.paymentMode!.tr(), style: getBodyText2Style(context, color: ColorManger.white)),
+          //         ),
+          //         if(expense.category!=null && expense.category)
+          //         Container(
+          //           decoration: BoxDecoration(
+          //             color: ColorManger.primary,
+          //             borderRadius: BorderRadius.circular(AppSize.s2)
+          //           ),
+          //           margin: const EdgeInsets.only(left: AppMargin.m12),
+          //           padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8, vertical: AppPadding.p4),
+          //           child: Text(expense.category!.tr(), style: getBodyText2Style(context, color: ColorManger.white)),
+          //         ),
+          //         const Spacer(),
+          //         Text("\u20B9 ${expense.amount}", 
+          //           style: getSubtitle2Style(context, color: expense.isIncome 
+          //                       ? ColorManger.success 
+          //                       : ColorManger.gRed,  
+          //                   fontWeight: FontWeightManager.bold)),
+          //       ]),
 
-                const Divider(height: AppSize.s32,),
+          //       const Divider(height: AppSize.s32,),
 
-                Row(
-                  children: [
-                    if(expense.remark!=null)
-                    Text(expense.remark!, style: getBodyText1Style(context)),
+          //       Row(
+          //         children: [
+          //           if(expense.remark!=null)
+          //           Text(expense.remark!, style: getBodyText1Style(context)),
                     
-                    const Spacer(),
+          //           const Spacer(),
                     
-                    IconButton(
-                      splashRadius: AppSize.s20,
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      onPressed: onDelete, 
-                      icon: const Icon(FontAwesomeIcons.trashCan, size: AppSize.s18,))
-                  ],
-                ),
-              ],
-            ),
-          )
+          //           IconButton(
+          //             splashRadius: AppSize.s20,
+          //             padding: EdgeInsets.zero,
+          //             constraints: const BoxConstraints(),
+          //             onPressed: onDelete, 
+          //             icon: const Icon(FontAwesomeIcons.trashCan, size: AppSize.s18,))
+          //         ],
+          //       ),
+            //   ],
+            // ),
+          // )
         ],
     );
   }
